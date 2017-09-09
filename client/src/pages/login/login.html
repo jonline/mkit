@@ -1,0 +1,49 @@
+<ion-content class="bg-image no-scroll" padding>
+
+  <img src="assets/images/meena-kitchen3.jpg" class="logo">
+
+  <div>
+    <!-- <ion-list class="list" inset>
+      <ion-item class="label">
+        <ion-label color="myWhite" style="font-size:12px" stacked>Username</ion-label>
+        <ion-input type="text" placeholder="Enter Username" [(ngModel)]="user.username"></ion-input>
+      </ion-item>
+
+      <ion-item class="label">
+        <ion-label color="myWhite" style="font-size:12px" stacked>Password</ion-label>
+        <ion-input color="myWhite" type="password" placeholder="Enter Password" [(ngModel)]="user.password"></ion-input>
+      </ion-item>
+    </ion-list> -->
+
+    <ion-list inset>
+      <ion-item>
+        <ion-label floating>Username</ion-label>
+        <ion-input [(ngModel)]="user.username" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item style="border-bottom: 1px solid #dedede">
+        <ion-label floating>Password</ion-label>
+        <ion-input [(ngModel)]="user.password" type="password"></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+  </div>
+
+
+  <p class="text" style="font-family:open-sans; font-size:14px; color:#ebebeb">Forgot your password?</p>
+
+  <div text-center>
+    <!-- <button class="btnWidth" ion-button color="secondary" round [navPush]="nextPage">Login</button> -->
+    <button class="btnWidth" ion-button color="secondary" round (click)="login(user)">Login</button>
+  </div>
+
+  <div text-center>
+    <button class="myButton" ion-button color="myWhite" round outline>Sign Up</button>
+  </div>
+
+  <img src="assets/images/facebook.png" class="fb-button">
+  <!-- <img src="assets/images/twitter.png" class="twitter-button"> -->
+  <img src="assets/images/wc.jpg" class="twitter-button" (click)="wechatLogin()">
+
+</ion-content>
