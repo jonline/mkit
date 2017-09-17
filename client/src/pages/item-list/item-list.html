@@ -25,9 +25,16 @@
       <ion-card-title>
         {{item.name}}
       </ion-card-title>
-      <p>
-        {{item.prices[0].price | currency:'USD':true:'2.2-2'}}
-      </p>
+      <div>
+        <p>
+          {{item.prices[0].price | currency:'USD':true:'2.2-2'}}
+        </p>
+        <ion-buttons end>
+          <button ion-button icon-left color="royal" round outline>
+          <ion-icon name="cart"></ion-icon> Add to cart
+          </button>
+        </ion-buttons>
+      </div>
     </ion-card-content>
   </ion-card>
 
