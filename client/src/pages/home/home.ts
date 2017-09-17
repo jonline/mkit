@@ -20,4 +20,7 @@ export class HomePage {
     this.auth.logout();
     this.navCtrl.push(LoginPage);
   }
+  onItemClickHandler (id) {
+    this.navCtrl.push('ItemList', { category: id });
+  }
 }
