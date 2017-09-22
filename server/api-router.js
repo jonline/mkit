@@ -8,9 +8,10 @@ const ObjectId = require('mongodb').ObjectId;
 function apiRouter(database) {
 
   const router = express.Router();
-  
+
   router.use(
-    checkJwt({ secret: process.env.JWT_SECRET }).unless({ path: '/api/authenticate' })
+    // checkJwt({ secret: process.env.JWT_SECRET }).unless({ path: '/api/authenticate' })
+    checkJwt({ secret: process.env.JWT_SECRET }).unless({ path: ['/api/authenticate', '/api/checkToken'] })
   );
 
   router.use((err, req, res, next) => {
@@ -71,7 +72,7 @@ function apiRouter(database) {
         let hash = bcrypt.hashSync(result.password, 10);
 
         if (!bcrypt.compareSync(user.password, result.password)) {
-        // if (!bcrypt.compareSync(user.password, hash)) {
+          // if (!bcrypt.compareSync(user.password, hash)) {
           return res.status(401).json({ error: 'incorrect password ' });
         }
 
@@ -87,6 +88,47 @@ function apiRouter(database) {
           token: token
         });
       });
+  });
+
+  router.post('/checkToken', function (req, res) {
+
+    var token = req.body.token;
+
+    if (token) {
+
+      jwt.verify(token, process.env.JWT_SECRET, function (err, validToken) {
+
+        if (err) {
+
+          res.json({
+            success: false,
+            message: 'Invalid token'
+          })
+
+        } else {
+
+          if (validToken.admin) {
+            res.json({
+              success: true,
+              message: 'Authenticated as Admin'
+            });
+          }
+
+          // if (!validToken.admin) {
+          //   res.json({
+          //     success: true,
+          //     message: 'Authenticated as Super Admin'
+          //   });
+          // }
+
+        }
+      });
+    } else {
+      res.json({
+        success: false,
+        message: 'No token provided'
+      });
+    }
   });
 
   return router;
