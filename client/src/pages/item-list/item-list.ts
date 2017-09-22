@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { AlertController, IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AlertController, NavController, NavParams } from 'ionic-angular';
+
+import { ItemDetails } from './../item-details/item-details';
 
 /**
  * Generated class for the ItemListPage page.
@@ -8,37 +10,18 @@ import { AlertController, IonicPage, NavController, NavParams } from 'ionic-angu
  * on Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-item-list',
   templateUrl: 'item-list.html',
 })
 export class ItemList {
-  categories: any[] = [
-    {
-      id: 0,
-      label: 'Appetizers'
-    },
-    {
-      id: 1,
-      label: 'Sides'
-    },
-    {
-      id: 2,
-      label: 'Desserts'
-    },
-    {
-      id: 3,
-      label: 'Main Courses'
-    }
-  ]
   items: any[] = [];
   selectedCategory = {};
   cartItems: any[] = [];
 
   appetizers = [
     {
-      categoryId: 0,
+      categoryId: 1,
       id: 1,
       name: 'Cretan Ntakos',
       tags: ['amet', 'adipiscing'],
@@ -77,7 +60,7 @@ export class ItemList {
       ]
     },
     {
-      categoryId: 0,
+      categoryId: 1,
       id: 2,
       name: 'Golder Cauliflower',
       tags: ['ultrices', 'venenatis'],
@@ -97,7 +80,7 @@ export class ItemList {
       ]
     },
     {
-      categoryId: 0,
+      categoryId: 1,
       id: 3,
       name: 'Shrimp Rolls',
       tags: ['euismod', 'finibus', 'ornare'],
@@ -145,7 +128,7 @@ export class ItemList {
       ]
     },
     {
-      categoryId: 0,
+      categoryId: 1,
       id: 4,
       name: 'Grilled Potatoes',
       tags: ['porttitor', 'lacinia'],
@@ -195,13 +178,16 @@ export class ItemList {
   ionViewDidLoad () {
 
     console.log('ionViewDidLoad ItemListPage');
-    let categoryId = this.navParams.get('category');
-    this.selectedCategory = this.categories.find(item => item.id === categoryId);
+    // let categoryId = this.navParams.get('category');
+    let category = this.navParams.get('category');
+    // this.selectedCategory = this.categories.find(item => item.id === categoryId);
+    this.selectedCategory = category;
     this.items = this.appetizers;
   }
 
   onItemClickHandler (item) {
-    this.navCtrl.push('ItemDetails', { data: item, category: this.selectedCategory });
+    // this.navCtrl.push('ItemDetails', { data: item, category: this.selectedCategory });
+    this.navCtrl.push(ItemDetails, { data: item, category: this.selectedCategory });
   }
   addToCard (event, item) {
     event.stopPropagation();

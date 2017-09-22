@@ -7,9 +7,9 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title text-center>{{selectedCategory?.label}}</ion-title>
+    <ion-title text-center>{{selectedCategory?.name}}</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only color="royal" (click)="onCartItemsClickHandler()">
+      <button ion-button icon-only color="royal" (click)="onCartItemsClickHandler()" style="margin: 0 6px;">
         <ion-icon name="cart"></ion-icon>
         <span *ngIf="cartItems.length" class="cart-badge">{{cartItems.length}}</span>
     </button>

@@ -9,23 +9,30 @@ page-home {
   ion-card {
     position: relative;
     text-align: center;
+    height: 200px;
+
+    img {
+      height: 100%;
+    }
+
+    .title-container {
+      position: absolute;
+      width: 100%;
+      top: 36%;
+      color: #fff;
+      background: rgba(0,0,0, 0.6);
+    }
   }
 
   .card-title {
-    position: absolute;
-    top: 36%;
     font-size: 2.0em;
-    width: 100%;
     font-weight: bold;
-    color: #fff;
+    width: 100%;
   }
 
   .card-subtitle {
     font-size: 1.0em;
-    position: absolute;
-    top: 52%;
     width: 100%;
-    color: #fff;
   }
 
 }

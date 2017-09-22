@@ -1,19 +1,18 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
-
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { IonicStorageModule } from '@ionic/storage';
-
+import { BrowserModule } from '@angular/platform-browser';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { IonicStorageModule } from '@ionic/storage';
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
-import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
-
-import { ApiService } from "./shared/api.service";
-import { AuthService } from "./shared/auth.service";
+import { ItemDetails } from './../pages/item-details/item-details';
+import { ItemList } from './../pages/item-list/item-list';
+import { MyApp } from './app.component';
+import { ApiService } from './shared/api.service';
+import { AuthService } from './shared/auth.service';
 
 
 
@@ -21,7 +20,9 @@ import { AuthService } from "./shared/auth.service";
   declarations: [
     MyApp,
     HomePage,
-    LoginPage
+    LoginPage,
+    ItemList,
+    ItemDetails
   ],
   imports: [
     BrowserModule,
@@ -33,7 +34,9 @@ import { AuthService } from "./shared/auth.service";
   entryComponents: [
     MyApp,
     HomePage,
-    LoginPage
+    LoginPage,
+    ItemList,
+    ItemDetails
   ],
   providers: [
     StatusBar,

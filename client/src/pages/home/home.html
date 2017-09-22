@@ -51,29 +51,16 @@
   </ion-slides>
 
   <div class="card-background-page">
-    <ion-card (click)="onItemClickHandler(0)">
-      <img src="assets/images/appetizer.jpg" />
-      <div class="card-title">Appetizers</div>
-      <div class="card-subtitle">20 Listings</div>
+
+    <ion-card *ngFor="let cat of foodCategory; let catIndex = index;" (click)="onItemClickHandler(cat)">
+      <img src="assets/images/{{cat.imageName}}" />
+
+      <div class="title-container">
+        <div class="card-title">{{cat.name}}</div>
+        <div class="card-subtitle">{{cat.items}} Listings</div>
+      </div>
     </ion-card>
 
-    <ion-card (click)="onItemClickHandler(1)">
-      <img src="assets/images/sideitems.jpg" />
-      <div class="card-title">Sides</div>
-      <div class="card-subtitle">15 Listings</div>
-    </ion-card>
-
-    <ion-card (click)="onItemClickHandler(2)">
-      <img src="assets/images/dessert.jpg" />
-      <div class="card-title">Desserts</div>
-      <div class="card-subtitle">12 Listings</div>
-    </ion-card>
-
-    <ion-card (click)="onItemClickHandler(3)">
-      <img src="assets/images/maincourse.jpg" />
-      <div class="card-title">Main Course</div>
-      <div class="card-subtitle">20 Listings</div>
-    </ion-card>
   </div>
 
 </ion-content>
