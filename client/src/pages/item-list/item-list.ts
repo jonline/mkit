@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AlertController, IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
  * Generated class for the ItemListPage page.
@@ -34,10 +34,12 @@ export class ItemList {
   ]
   items: any[] = [];
   selectedCategory = {};
+  cartItems: any[] = [];
 
   appetizers = [
     {
       categoryId: 0,
+      id: 1,
       name: 'Cretan Ntakos',
       tags: ['amet', 'adipiscing'],
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae interdum ante. Quisque a augue elit. Sed id dolor id est scelerisque porttitor eget a ligula. Ut dapibus feugiat purus tempus maximus.',
@@ -76,6 +78,7 @@ export class ItemList {
     },
     {
       categoryId: 0,
+      id: 2,
       name: 'Golder Cauliflower',
       tags: ['ultrices', 'venenatis'],
       description: 'Donec et quam ultrices, maximus urna quis, elementum neque. Phasellus eu ultrices odio, in venenatis erat. Curabitur feugiat ut tellus non feugiat.',
@@ -95,6 +98,7 @@ export class ItemList {
     },
     {
       categoryId: 0,
+      id: 3,
       name: 'Shrimp Rolls',
       tags: ['euismod', 'finibus', 'ornare'],
       description: 'Donec euismod mattis finibus. In finibus risus vitae tortor varius, eu ornare erat sodales. Nullam ut dignissim mauris.',
@@ -142,6 +146,7 @@ export class ItemList {
     },
     {
       categoryId: 0,
+      id: 4,
       name: 'Grilled Potatoes',
       tags: ['porttitor', 'lacinia'],
       description: 'Cras porttitor, metus a facilisis lacinia, dui tortor mollis quam, vitae laoreet lectus nulla nec dui. Donec congue ultricies dolor, non pharetra est rhoncus non. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed et purus orci.',
@@ -181,7 +186,10 @@ export class ItemList {
       ]
     },
   ]
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    private navCtrl: NavController,
+    private navParams: NavParams,
+    private alertCtrl: AlertController) {
   }
 
   ionViewDidLoad () {
@@ -195,5 +203,43 @@ export class ItemList {
   onItemClickHandler (item) {
     this.navCtrl.push('ItemDetails', { data: item, category: this.selectedCategory });
   }
+  addToCard (event, item) {
+    event.stopPropagation();
+    console.log('add to cart....', );
+    this.showPrompt(item);
+  }
 
+  showPrompt (item) {
+    let alert = this.alertCtrl.create();
+    alert.setTitle(item.name);
+    alert.setMessage('Quantity:');
+
+    alert.addInput({
+      type: 'number',
+      name: 'qty',
+      min: '1',
+      value: "1"
+    });
+
+    alert.addButton('Cancel');
+    alert.addButton({
+      text: 'Add to cart',
+      handler: data => {
+        // console.log('OKKK', data[0]);
+        // this.cartItems += +data[0];
+        const _cart = this.cartItems.find(x => x.id == item.id);
+        if (_cart) {
+          _cart.quantity += +data[0];
+          console.log('_cart', _cart);
+        } else {
+          this.cartItems.push(Object.assign({}, item, { quantity: +data[0] }))
+        }
+      }
+    });
+    alert.present();
+  }
+
+  onCartItemsClickHandler () {
+    console.log('carts', this.cartItems);
+  }
 }

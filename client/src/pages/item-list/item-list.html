@@ -9,8 +9,9 @@
   <ion-navbar>
     <ion-title text-center>{{selectedCategory?.label}}</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only color="royal">
+      <button ion-button icon-only color="royal" (click)="onCartItemsClickHandler()">
         <ion-icon name="cart"></ion-icon>
+        <span *ngIf="cartItems.length" class="cart-badge">{{cartItems.length}}</span>
     </button>
     </ion-buttons>
   </ion-navbar>
@@ -30,15 +31,20 @@
           <p>
             {{item.prices[0].price | currency:'USD':true:'2.2-2'}}
           </p>
-
-        </div>
-      </ion-card-content>
-    </ion-card>
-    <ion-buttons end style="position: relative; top: -60px; right: 10px;">
-      <button ion-button icon-left color="royal" round outline>
+          <!-- <ion-buttons end style="position: relative; right: 10px;">
+            <button ion-button icon-left color="royal" round outline>
           <ion-icon name="cart"></ion-icon> Add to cart
           </button>
-    </ion-buttons>
+          </ion-buttons> -->
+        </div>
+      </ion-card-content>
+      <ion-buttons end style="position: relative; right: 10px; top: -10px" (click)="addToCard($event, item)">
+        <button ion-button icon-left color="royal" round outline>
+          <ion-icon name="cart"></ion-icon> Add to cart
+          </button>
+      </ion-buttons>
+    </ion-card>
+
   </div>
 
 </ion-content>

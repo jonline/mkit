@@ -1,3 +1,11 @@
 page-item-list {
-
+ .cart-badge {
+    position: absolute;
+    top: -5px;
+    // left: 8px;
+    text-align: center;
+    width: 30px;
+    font-size: 0.7em;
+    font-weight: bold;
+ }
 }
