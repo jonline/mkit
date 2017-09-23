@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, Slides } from 'ionic-angular';
 
 import { AuthService } from '../../app/shared/auth.service';
 import { LoginPage } from '../login/login';
@@ -11,7 +11,7 @@ import { ItemList } from './../item-list/item-list';
   templateUrl: 'home.html'
 })
 export class HomePage {
-
+  @ViewChild(Slides) slides: Slides;
   foodCategory = [
     {
       id: 1,
@@ -44,12 +44,16 @@ export class HomePage {
     private auth: AuthService) {
   }
 
+  public ionViewWillEnter () {
+    this.slides.slideTo(0, 1000);
+    this.slides.startAutoplay();
+  }
+
   logOut () {
     this.auth.logout();
     this.navCtrl.push(LoginPage);
   }
   onItemClickHandler (category) {
-    // this.navCtrl.push('ItemList', { category: category });
     this.navCtrl.push(ItemList, { category: category });
   }
 }
