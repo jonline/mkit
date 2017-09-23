@@ -3,6 +3,7 @@ import { NavController, Slides } from 'ionic-angular';
 
 import { AuthService } from '../../app/shared/auth.service';
 import { LoginPage } from '../login/login';
+import { CategoryService } from './../../providers/categories.service';
 import { ItemList } from './../item-list/item-list';
 
 // import { ApiService } from "../../app/shared/api.service";
@@ -12,38 +13,21 @@ import { ItemList } from './../item-list/item-list';
 })
 export class HomePage {
   @ViewChild(Slides) slides: Slides;
-  foodCategory = [
-    {
-      id: 1,
-      name: 'Appetizers',
-      items: 18,
-      imageName: 'appetizer.jpg'
-    },
-    {
-      id: 2,
-      name: 'Sides',
-      items: 15,
-      imageName: 'sideitems.jpg'
-    },
-    {
-      id: 3,
-      name: 'Desserts',
-      items: 12,
-      imageName: 'dessert.jpg'
-    },
-    {
-      id: 4,
-      name: 'Main Course',
-      items: 10,
-      imageName: 'maincourse.jpg'
-    }
-  ]
+
+  foodCategory = [];
+
   constructor(
     public navCtrl: NavController,
     // private api: ApiService,
-    private auth: AuthService) {
+    private auth: AuthService,
+    private categoryService: CategoryService) {
   }
 
+  public ionViewDidLoad () {
+    this.categoryService.getCategories().subscribe(data => {
+      this.foodCategory = data;
+    })
+  }
   public ionViewWillEnter () {
     this.slides.slideTo(0, 1000);
     this.slides.startAutoplay();

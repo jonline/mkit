@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "name": "Appetizers",
+        "items": 18,
+        "imageName": "appetizer.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Sides",
+        "items": 15,
+        "imageName": "sideitems.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Desserts",
+        "items": 12,
+        "imageName": "dessert.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Main Course",
+        "items": 10,
+        "imageName": "maincourse.jpg"
+    }
+]

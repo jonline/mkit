@@ -8,6 +8,8 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
+import { CategoryService } from '../providers/categories.service';
+import { ItemService } from '../providers/items.service';
 import { ItemDetails } from './../pages/item-details/item-details';
 import { ItemList } from './../pages/item-list/item-list';
 import { MyApp } from './app.component';
@@ -43,7 +45,9 @@ import { AuthService } from './shared/auth.service';
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     ApiService,
-    AuthService
+    AuthService,
+    CategoryService,
+    ItemService
   ]
 })
 export class AppModule { }

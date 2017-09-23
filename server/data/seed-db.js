@@ -4,7 +4,8 @@ const MongoClient = require('mongodb').MongoClient;
 const bcrypt = require('bcrypt');
 
 const users = require('./users');
-// const contacts = require('./contacts');
+const categories = require('./categories');
+const items = require('./items');
 
 
 function seedCollection(collectionName, initialRecords) {
@@ -14,7 +15,7 @@ function seedCollection(collectionName, initialRecords) {
 
     const collection = db.collection(collectionName);
 
-    collection.remove();  
+    collection.remove();
 
     initialRecords.forEach((item) => {
       if (item.password) {
@@ -35,5 +36,8 @@ function seedCollection(collectionName, initialRecords) {
 }
 
 
-seedCollection('users', users);
-// seedCollection('contacts', contacts);
+// seedCollection('users', users);
+
+// seedCollection('categories', categories);
+// seedCollection('items', items);
+

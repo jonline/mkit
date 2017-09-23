@@ -20,9 +20,9 @@ function apiRouter(database) {
     }
   });
 
-  router.get('/contacts', (req, res) => {
+  router.get('/categories', (req, res) => {
 
-    const contactsCollection = database.collection('contacts');
+    const contactsCollection = database.collection('categories');
 
     contactsCollection.find({}).toArray((err, docs) => {
       return res.json(docs)
@@ -31,10 +31,10 @@ function apiRouter(database) {
   });
 
   //New route
-  router.get('/contacts/:id', (req, res) => {
+  router.get('/categories/:id', (req, res) => {
 
     let id = req.params.id;
-    const contactsCollection = database.collection('contacts');
+    const contactsCollection = database.collection('categories');
 
     contactsCollection.findOne({ _id: ObjectId(id) }, (err, result) => {
       return res.status(201).json(result);
@@ -42,10 +42,10 @@ function apiRouter(database) {
 
   });
 
-  router.post('/contacts', (req, res) => {
+  router.post('/categories', (req, res) => {
     const user = req.body;
 
-    const contactsCollection = database.collection('contacts');
+    const contactsCollection = database.collection('categories');
 
     contactsCollection.insertOne(user, (err, r) => {
       if (err) {
@@ -58,6 +58,19 @@ function apiRouter(database) {
     });
   });
 
+  // items route
+
+  router.get('/items', (req, res) => {
+
+    const contactsCollection = database.collection('items');
+
+    contactsCollection.find({}).toArray((err, docs) => {
+      return res.json(docs)
+    });
+
+  });
+
+  // auth routes
   router.post('/authenticate', (req, res) => {
     const user = req.body;
 

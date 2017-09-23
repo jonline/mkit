@@ -5,6 +5,7 @@ import { Storage } from '@ionic/storage';
 export class AuthService {
 
   storageKey: string = 'meenas-kitchen-jwt';
+  token: string;
 
   constructor(
     private storage: Storage
@@ -23,6 +24,7 @@ export class AuthService {
   }
 
   logout () {
+    this.token = null;
     this.storage.remove(this.storageKey);
   }
 

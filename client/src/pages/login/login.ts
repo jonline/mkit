@@ -43,6 +43,7 @@ export class LoginPage {
     this.api.post('authenticate', payload)
       .subscribe(data => {
         this.closeLoader();
+        this.auth.token = data.token;
         this.auth.setToken(data.token);
         this.navCtrl.push(HomePage);
       },
@@ -82,6 +83,7 @@ export class LoginPage {
         // Uncommenting this will attempt to modify the payload of a valid token with a userId of 57 to have a userId of 1 instead
         // Hint: it won't work
         // token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTQ5NjYzOTU2Mn0=.JZKf2L3usAQWsC1plSPCRcHMoSST_3_BYtF6_-rVk80';
+        this.auth.token = token;
 
         this.reauthenticate(token).map(res => res).subscribe((res) => {
 
