@@ -8,6 +8,12 @@
 
   <ion-navbar>
     <ion-title>{{category?.name}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal" style="margin: 0 6px;">
+        <ion-icon name="cart"></ion-icon>
+        <span class="cart-badge"></span>
+    </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -42,5 +48,15 @@
       <!-- </ion-list> -->
     </ion-card>
   </ion-card>
+
+  <div class="btn-actions-container">
+    <button ion-button icon-left color="danger">
+        <ion-icon name="cart"></ion-icon> Add to cart
+    </button>
+
+    <button ion-button icon-left color="danger">
+        <ion-icon name="star"></ion-icon> Add to favorites
+    </button>
+  </div>
 
 </ion-content>
