@@ -15,8 +15,7 @@ import { ItemList } from './../pages/item-list/item-list';
 import { MyApp } from './app.component';
 import { ApiService } from './shared/api.service';
 import { AuthService } from './shared/auth.service';
-
-
+import { CartService } from './shared/cart.service';
 
 @NgModule({
   declarations: [
@@ -47,7 +46,8 @@ import { AuthService } from './shared/auth.service';
     ApiService,
     AuthService,
     CategoryService,
-    ItemService
+    ItemService,
+    CartService
   ]
 })
 export class AppModule { }

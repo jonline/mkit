@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the ItemDetailsPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import { CartService } from './../../app/shared/cart.service';
 
 @Component({
   selector: 'page-item-details',
@@ -16,7 +11,11 @@ export class ItemDetails {
   category: any;
   item: any = {};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public cartService: CartService
+  ) {
   }
 
   ionViewDidLoad () {
@@ -25,4 +24,7 @@ export class ItemDetails {
     this.category = this.navParams.get('category');
   }
 
+  onAddCartClickHandler () {
+    this.cartService.showAddToCartPopUp(this.item)
+  }
 }
