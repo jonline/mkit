@@ -21,28 +21,21 @@
 <ion-content padding>
 
   <div *ngFor="let item of items; let i = index">
+
     <ion-card (click)="onItemClickHandler(item)">
       <img src="assets/images/{{item.image}}" />
-      <ion-card-content>
-        <ion-card-title>
-          {{item.name}}
-        </ion-card-title>
-        <div>
-          <p>
-            {{item.prices[0].price | currency:'USD':true:'2.2-2'}}
-          </p>
-          <!-- <ion-buttons end style="position: relative; right: 10px;">
-            <button ion-button icon-left color="royal" round outline>
-          <ion-icon name="cart"></ion-icon> Add to cart
-          </button>
-          </ion-buttons> -->
-        </div>
-      </ion-card-content>
-      <ion-buttons end style="position: relative; right: 10px; top: -10px" (click)="addToCard($event, item)">
-        <button ion-button icon-left color="royal" round outline>
-          <ion-icon name="cart"></ion-icon> Add to cart
+
+      <div class="title-container">
+        <div class="card-title">{{item.name}}</div>
+        <div class="card-subtitle">{{item.prices[0].price | currency:'USD':true:'2.2-2'}}</div>
+      </div>
+
+      <ion-buttons end class="btn-add-cart">
+        <button ion-button icon-left (click)="addToCard($event, item)" color="danger" round>
+          <ion-icon name="add"></ion-icon> <ion-icon name="cart"></ion-icon>
           </button>
       </ion-buttons>
+
     </ion-card>
 
   </div>

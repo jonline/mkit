@@ -204,7 +204,7 @@ export class ItemList {
       type: 'number',
       name: 'qty',
       min: '1',
-      value: "1"
+      value: '1'
     });
 
     alert.addButton('Cancel');

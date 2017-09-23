@@ -1,11 +1,41 @@
 page-item-list {
- .cart-badge {
-    position: absolute;
-    top: -5px;
-    // left: 8px;
-    text-align: center;
-    width: 30px;
-    font-size: 0.7em;
-    font-weight: bold;
- }
+    .cart-badge {
+        position: absolute;
+        top: -5px;
+        // left: 8px;
+        text-align: center;
+        width: 30px;
+        font-size: 0.7em;
+        font-weight: bold;
+    }
+
+    ion-card {
+        position: relative;
+
+        .btn-add-cart {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    }
+
+    .title-container {
+        position: absolute;
+        bottom: 0;
+        padding: 0 10px;
+        width: 100%;
+        color: #fff;
+        background: rgba(0,0,0, 0.6);
+
+        .card-title {
+            font-size: 1.2em;
+            // font-weight: bold;
+            width: 100%;
+        }
+
+        .card-subtitle {
+            font-size: 1.0em;
+            width: 100%;
+        }
+    }
 }
