@@ -1,0 +1,13 @@
+page-orders {
+    .quantity-container {
+        display: flex !important;
+        align-items: center;
+        justify-content: space-evenly;
+        ion-icon {
+            font-size: 1.6em !important;
+        }
+        ion-badge {
+            margin: 0 8px;
+        }
+    }
+}

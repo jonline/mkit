@@ -3,7 +3,7 @@
   <ion-navbar>
     <ion-title>{{category?.name}}</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only color="royal" style="margin: 0 6px;">
+      <button ion-button icon-only color="royal" style="margin: 0 6px;" (click)="onCartItemsClickHandler()">
         <ion-icon name="cart"></ion-icon>
         <!-- <span class="cart-badge"></span> -->
         <span *ngIf="cartService.getCartItems().length" class="cart-badge">{{cartService.getCartItems().length}}</span>

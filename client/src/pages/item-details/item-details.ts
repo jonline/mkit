@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { CartService } from './../../app/shared/cart.service';
+import { OrderService } from './../../providers/order.service';
+import { OrdersPage } from './../orders/orders';
 
 @Component({
   selector: 'page-item-details',
@@ -14,7 +16,9 @@ export class ItemDetails {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public cartService: CartService
+    public cartService: CartService,
+    public orderService: OrderService
+
   ) {
   }
 
@@ -26,5 +30,10 @@ export class ItemDetails {
 
   onAddCartClickHandler () {
     this.cartService.showAddToCartPopUp(this.item)
+  }
+
+  onCartItemsClickHandler () {
+    // console.log('carts', this.cartItems);
+    this.orderService.showOrderModal(OrdersPage, { data: this.cartService.getCartItems() });
   }
 }

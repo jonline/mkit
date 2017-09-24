@@ -12,6 +12,8 @@ import { CategoryService } from '../providers/categories.service';
 import { ItemService } from '../providers/items.service';
 import { ItemDetails } from './../pages/item-details/item-details';
 import { ItemList } from './../pages/item-list/item-list';
+import { OrdersPage } from './../pages/orders/orders';
+import { OrderService } from './../providers/order.service';
 import { MyApp } from './app.component';
 import { ApiService } from './shared/api.service';
 import { AuthService } from './shared/auth.service';
@@ -23,7 +25,8 @@ import { CartService } from './shared/cart.service';
     HomePage,
     LoginPage,
     ItemList,
-    ItemDetails
+    ItemDetails,
+    OrdersPage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import { CartService } from './shared/cart.service';
     HomePage,
     LoginPage,
     ItemList,
-    ItemDetails
+    ItemDetails,
+    OrdersPage
   ],
   providers: [
     StatusBar,
@@ -47,7 +51,8 @@ import { CartService } from './shared/cart.service';
     AuthService,
     CategoryService,
     ItemService,
-    CartService
+    CartService,
+    OrderService
   ]
 })
 export class AppModule { }

@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { OrderService } from '../../providers/order.service';
 import { CartService } from './../../app/shared/cart.service';
 import { ItemService } from './../../providers/items.service';
 import { ItemDetails } from './../item-details/item-details';
+import { OrdersPage } from './../orders/orders';
 
 @Component({
   selector: 'page-item-list',
@@ -18,7 +20,8 @@ export class ItemList {
     private navCtrl: NavController,
     private navParams: NavParams,
     private itemService: ItemService,
-    public cartService: CartService
+    public cartService: CartService,
+    public orderService: OrderService
   ) {
   }
 
@@ -37,6 +40,7 @@ export class ItemList {
   }
 
   onCartItemsClickHandler () {
-    console.log('carts', this.cartItems);
+    // console.log('carts', this.cartItems);
+    this.orderService.showOrderModal(OrdersPage, { data: this.cartService.getCartItems() });
   }
 }
