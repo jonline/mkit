@@ -36,8 +36,8 @@ function seedCollection(collectionName, initialRecords) {
 }
 
 
-// seedCollection('users', users);
+seedCollection('users', users);
 
-// seedCollection('categories', categories);
-// seedCollection('items', items);
+seedCollection('categories', categories);
+seedCollection('items', items);
 
