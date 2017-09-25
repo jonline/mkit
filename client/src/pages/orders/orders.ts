@@ -30,4 +30,15 @@ export class OrdersPage {
     this.viewCtrl.dismiss();
   }
 
+  onAddQty (item) {
+    item.quantity += 1;
+  }
+
+  onRemoveQty (item) {
+    item.quantity != 1 && (item.quantity -= 1);
+  }
+
+  onTrash (item) {
+
+  }
 }
