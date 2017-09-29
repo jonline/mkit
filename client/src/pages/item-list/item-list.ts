@@ -34,6 +34,7 @@ export class ItemList {
   onItemClickHandler (item) {
     this.navCtrl.push(ItemDetails, { data: item, category: this.selectedCategory });
   }
+
   addToCard (event, item) {
     event.stopPropagation();
     this.cartService.showAddToCartPopUp(item);
@@ -42,5 +43,10 @@ export class ItemList {
   onCartItemsClickHandler () {
     // console.log('carts', this.cartItems);
     this.orderService.showOrderModal(OrdersPage, { data: this.cartService.getCartItems() });
+  }
+
+  addToFav (event, item) {
+    event.stopPropagation();
+    item.favourite = !item.favourite;
   }
 }

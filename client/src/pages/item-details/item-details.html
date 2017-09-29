@@ -42,7 +42,38 @@
       </ion-item>
       <!-- </ion-list> -->
     </ion-card>
+
+    <!-- Extras -->
+    <ion-card *ngIf="item?.extras">
+      <ion-card-header class="card-header-bottom">
+        Extras
+      </ion-card-header>
+      <ion-item *ngFor="let extra of item?.extras; let i = index;">
+        <ion-toggle checked="{{extra.active == 1 ? true : false}}"></ion-toggle>
+        <ion-label style="font-size:0.9em">
+          {{extra.label}} : {{extra.price | currency:'USD':true:'2.2-2'}}
+        </ion-label>
+      </ion-item>
+    </ion-card>
+
+    <!-- Prices -->
+    <ion-card *ngIf="item?.prices">
+      <ion-card-header class="card-header-bottom">
+        Size & Prices
+      </ion-card-header>
+
+      <ion-list radio-group>
+        <ion-item *ngFor="let price of item?.prices; let i = index;">
+          <ion-label style="font-size:0.9em">
+            {{price.label}} : {{price.price | currency:'USD':true:'2.2-2'}}
+          </ion-label>
+          <ion-radio checked="{{i ==0 ? true : false}}" value="{{i}}"></ion-radio>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+
   </ion-card>
+  <!-- main card -->
 
   <div class="btn-actions-container">
     <button ion-button icon-left color="danger" (click)="onAddCartClickHandler()">

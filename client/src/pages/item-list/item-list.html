@@ -25,10 +25,16 @@
         <div class="card-subtitle">{{item.prices[0].price | currency:'USD':true:'2.2-2'}}</div>
       </div>
 
+      <ion-buttons start class="btn-add-fav">
+        <button ion-button icon-only (click)="addToFav($event, item)" style="border-radius: 20%;">
+          <ion-icon name="{{item.favourite ? 'heart' : 'heart-outline'}}"></ion-icon>
+        </button>
+      </ion-buttons>
+
       <ion-buttons end class="btn-add-cart">
         <button ion-button icon-left (click)="addToCard($event, item)" color="danger" round>
           <ion-icon name="add"></ion-icon> <ion-icon name="cart"></ion-icon>
-          </button>
+        </button>
       </ion-buttons>
 
     </ion-card>

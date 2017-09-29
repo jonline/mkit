@@ -1,7 +1,10 @@
 page-item-details {
     .card-header-bottom {
         border-bottom: 1px solid rgba(0, 0, 0, .14);
-        font-size: 2em;
+        font-size: 1.5em;
+        padding: 10px;
+        background: gray;
+        color: #fff;
     }
     .cart-badge {
         position: absolute;
