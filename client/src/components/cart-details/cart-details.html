@@ -1,0 +1,57 @@
+<!-- <ion-content> -->
+
+<ion-list>
+
+  <ion-item-sliding *ngFor="let item of items">
+    <ion-item>
+
+      <ion-thumbnail item-start>
+        <img src="assets/images/{{item.image}}" />
+      </ion-thumbnail>
+      {{item.name}}
+      <ion-badge color="secondary">$5.00</ion-badge>
+      <div class="quantity-container-actions">
+        <button ion-button icon-only color="danger" (click)="onRemoveQty(item)">
+          <ion-icon name='remove'></ion-icon>
+        </button>
+        <ion-badge>{{item.quantity}}</ion-badge>
+        <button ion-button icon-only color="danger" (click)="onAddQty(item)">
+          <ion-icon name='add'></ion-icon>
+        </button>
+      </div>
+      <ion-note item-end>
+        {{ 5 * item.quantity}}
+      </ion-note>
+
+    </ion-item>
+
+    <ion-item-options side="right">
+      <ion-buttons start>
+        <button ion-button icon-only color="danger">
+          <ion-icon name='trash'></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-item-options>
+
+    <ion-item-options side="left">
+      <ion-buttons start>
+        <button ion-button icon-only>
+          <ion-icon name='heart'></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-item-options>
+
+  </ion-item-sliding>
+
+</ion-list>
+
+<div class="total-price-container">
+  <ion-item>
+    Total:
+    <ion-note item-end>$500.00</ion-note>
+  </ion-item>
+</div>
+<div text-center>
+  <button ion-button round color="secondary">Order Now</button>
+</div>
+<!-- </ion-content> -->

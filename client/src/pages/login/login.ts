@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, Loading, LoadingController, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, Loading, LoadingController, MenuController, NavController, NavParams } from 'ionic-angular';
 
 import { ApiService } from '../../app/shared/api.service';
 import { AuthService } from '../../app/shared/auth.service';
@@ -23,7 +23,10 @@ export class LoginPage {
     public navParams: NavParams,
     private loadingCtrl: LoadingController,
     private api: ApiService,
-    private auth: AuthService, ) {
+    private auth: AuthService,
+    private menuCtrl: MenuController
+  ) {
+    this.menuCtrl.enable(false, 'asideMenu');
   }
 
   ionViewDidLoad () {

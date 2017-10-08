@@ -1,1 +1,44 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="content" id="asideMenu" swipeEnabled="false">
+
+    <ion-content padding>
+
+        <!-- <ion-grid no-padding style="margin-top:4vh">
+            <ion-row align-items-end>
+                <ion-col col-auto>
+                    <ion-icon name="contact" style="font-size: 4em"></ion-icon>
+                </ion-col>
+
+                <ion-col col-auto style="margin-left:5vw">
+                    <h6>Joel Erickson</h6>
+                    <p style="font-family:open-sans; font-size:12px; color:#758692; margin-top:-1.5vh">Indonesia</p>
+                </ion-col>
+            </ion-row> -->
+
+        <!-- <ion-row padding align-items-center *ngFor="let p of pages" style="margin-top:4vh">
+                <ion-col col-auto>
+                    <ion-icon [name]="p.icon"></ion-icon>
+                </ion-col>
+
+                <ion-col col-auto style="margin-left:4vw">
+                    <p style="font-family:open-sans; font-size:20px; letter-spacing:0.5px; color:#1c252a; margin-top:1.5vh">{{p.title}}</p>
+                </ion-col>
+            </ion-row> -->
+
+
+
+        <!-- </ion-grid> -->
+
+        <ion-list>
+            <button menuClose ion-item icon-left *ngFor="let p of pages" (click)="openPage(p)">
+                <ion-icon [name]="p.icon"></ion-icon> {{p.title}}
+            </button>
+            <!-- <button menuClose ion-item icon-left (click)="signOut()">
+                <ion-icon name="log-out"></ion-icon> Sign Out
+            </button> -->
+        </ion-list>
+
+    </ion-content>
+
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content></ion-nav>

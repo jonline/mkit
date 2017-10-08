@@ -1,6 +1,9 @@
 <ion-header>
 
   <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title text-center>{{selectedCategory?.name}}</ion-title>
     <ion-buttons end>
       <button ion-button icon-only color="royal" (click)="onCartItemsClickHandler()" style="margin: 0 6px;">

@@ -1,8 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, Slides } from 'ionic-angular';
+import { MenuController, NavController, Slides } from 'ionic-angular';
 
 import { AuthService } from '../../app/shared/auth.service';
 import { LoginPage } from '../login/login';
+import { CartService } from './../../app/shared/cart.service';
 import { CategoryService } from './../../providers/categories.service';
 import { ItemList } from './../item-list/item-list';
 
@@ -20,7 +21,12 @@ export class HomePage {
     public navCtrl: NavController,
     // private api: ApiService,
     private auth: AuthService,
-    private categoryService: CategoryService) {
+    private categoryService: CategoryService,
+    private cartService: CartService,
+    private menuCtrl: MenuController
+  ) {
+    this.menuCtrl.swipeEnable(true, 'asideMenu');
+    this.menuCtrl.enable(true, 'asideMenu');
   }
 
   public ionViewDidLoad () {
@@ -35,6 +41,7 @@ export class HomePage {
 
   logOut () {
     this.auth.logout();
+    this.cartService._cartItems = [];
     this.navCtrl.push(LoginPage);
   }
   onItemClickHandler (category) {

@@ -10,8 +10,10 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { CategoryService } from '../providers/categories.service';
 import { ItemService } from '../providers/items.service';
+import { CartDetailsComponent } from './../components/cart-details/cart-details';
 import { ItemDetails } from './../pages/item-details/item-details';
 import { ItemList } from './../pages/item-list/item-list';
+import { MyCartPage } from './../pages/my-cart/my-cart';
 import { OrdersPage } from './../pages/orders/orders';
 import { OrderService } from './../providers/order.service';
 import { MyApp } from './app.component';
@@ -26,7 +28,9 @@ import { CartService } from './shared/cart.service';
     LoginPage,
     ItemList,
     ItemDetails,
-    OrdersPage
+    OrdersPage,
+    MyCartPage,
+    CartDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,9 @@ import { CartService } from './shared/cart.service';
     LoginPage,
     ItemList,
     ItemDetails,
-    OrdersPage
+    OrdersPage,
+    MyCartPage,
+    CartDetailsComponent
   ],
   providers: [
     StatusBar,
